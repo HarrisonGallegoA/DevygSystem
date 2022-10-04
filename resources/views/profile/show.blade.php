@@ -1,4 +1,12 @@
-<x-app-layout>
+
+@extends('layouts.app')
+@section('aside_menu')
+@include('layouts.aside')
+@endsection
+@section('titulo_ventana', 'Roles')
+
+@section('Contenido_app')
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
@@ -42,4 +50,6 @@
             @endif
         </div>
     </div>
-</x-app-layout>
+
+
+    @endsection

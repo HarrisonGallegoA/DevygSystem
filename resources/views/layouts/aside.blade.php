@@ -17,13 +17,13 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Interfaz
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -61,14 +61,12 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Servicios</h6>
-                        <a class="collapse-item" href="#">Servicio de Hospedaje</a>
-                        <a class="collapse-item" href="#">Servicios</a>
+                        <a class="collapse-item" href="{{ route('servicioIndex') }}">Servicios</a>
                         <a class="collapse-item" href="#">Planes</a>
                     </div>
                 </div>
             </li>
         
-
             <!-- Divider -->
             <!--<hr class="sidebar-divider">-->
 
@@ -83,7 +81,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities3"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="bi bi-cart"></i>
+                    <i class="fa-regular fa-calendar-days"></i>
                     <span>Reservas</span>
                 </a>
                 <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities"
@@ -104,14 +102,27 @@
             <!-- Nav Item - Tables -->
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{route('domoIndex')}}">
                     <i class="bi bi-house-fill"></i>
                     <span>Domos</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('caracteristicaIndex') }}">
+                    <i class="fa-solid fa-tv"></i>
+                    <span>Caracteristicas</span></a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="bi bi-chat-heart"></i>
                     <span>Recomendaciones</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="bi bi-question-circle-fill"></i>
+                    <span>Ayudas</span></a>
             </li>
 
             <!-- Divider -->
