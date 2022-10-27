@@ -98,8 +98,8 @@
                         <td>{{$caracteristica->cantidad}}</td>
                         <td>
 
-                            <form action="{{route('caracteristicaEliminar', $caracteristica)}}" method="post"
-                                class="formulario-eliminar">
+                          {{--   <form action="{{route('caracteristicaEliminar', $caracteristica)}}" method="post"
+                                class="formulario-eliminar"> --}}
                                 <a href="#mostrarCaracteristica{{$caracteristica->id}}" data-toggle="modal"
                                     data-target="#mostrarCaracteristica{{$caracteristica->id}}"><i
                                         class="fas fa-info-circle fa-lg text-success"></i></a>
@@ -108,10 +108,10 @@
                                     style="margin-left: 20px; margin-right: 20px;"><i
                                         class="fas fa-user-edit fa-lg"></i></a>
 
-                                @csrf @method('DELETE')
+                                {{-- @csrf @method('DELETE')
                                 <button type="submit " style="border: none"><i
-                                        class="fas fa-trash-alt fa-lg text-danger"></i></button>
-                            </form>
+                                        class="fas fa-trash-alt fa-lg text-danger"></i></button> --}}
+                           {{--  </form> --}}
                         </td>
                     </tr>
         </div>

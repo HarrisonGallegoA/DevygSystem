@@ -21,6 +21,7 @@
     <link href="{{asset('asset/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <!--Datatable-->
     <link href="{{asset('asset/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -36,6 +37,9 @@
 
     <!-- icons fontawesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!--jquery-->
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
 
     <!-- links prueba -->
@@ -266,9 +270,9 @@
                 <div class="container-fluid ">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800 ">@yield('titulo_ventana')</h1>
-                    </div>
+                    {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4 "> --}}
+                        <h1 class="text-center h3 mb-0 text-gray-800">@yield('titulo_ventana')</h1>
+                    {{-- </div> --}}
 
                     <!-- Content Row -->
                     
@@ -346,6 +350,19 @@
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap4.min.js"></script>
 
+    <!--jquery-->
+
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("select").select2({
+                height: 'calc(1.5em + .75rem + 2px)'
+            });
+        });
+    </script> --}}
+    
     <!-- scripts alertas -->
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

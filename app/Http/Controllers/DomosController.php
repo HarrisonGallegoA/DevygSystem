@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Caracteristica;
-use App\Models\Domo;
+/* use App\Models\Domo; */
 
 class DomosController extends Controller
 {
-    public function index(){
+     public function index(){
         $domos = Domo::paginate();
         $caracteristicas = Caracteristica::all();
         return view('Domos.index', compact('domos', 'caracteristicas'));
@@ -49,9 +48,9 @@ class DomosController extends Controller
     }
 
 
-    public function eliminar(Domo $domo)
+    /* public function eliminar(Domo $domo)
     {
         $domo->delete();
         return redirect('domos')->with('mensaje', 'Domo eliminado');
-    }
+    }  */
 }

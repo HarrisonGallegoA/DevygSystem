@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Caracteristica;
+/* use Illuminate\Database\Eloquent\Factories\HasFactory; */
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Domo extends Model
 {
-    protected $guarded = [];
-    use HasFactory;
+    /* use HasFactory; */
 
-    public function caracteristicaDomo(){
-        return $this->belongsTo(Caracteristica::class, 'idCaracteristicas');
-    }
+    protected $table = 'domo';
+
+    protected $fillable = ['nombre', 'descripcion', 'capacidad', 'numerobaños', 'tipodomo', 'estado'];
+
+    public $timestamps = false;
 }

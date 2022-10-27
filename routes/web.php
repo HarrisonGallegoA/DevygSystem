@@ -1,10 +1,12 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+/* use App\Http\Controllers\DomosController; */
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DomosController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\CaracteristicasController;
+use App\Http\Controllers\DomoCaracteristicaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,10 +41,10 @@ Route::get('/Roles', function () {
 
 
 Route::get('domos', [DomosController::class, 'index'])->name('domoIndex');
-Route::post('domos', [DomosController::class, 'guardar'])->name('domoGuardar');
-Route::put('domos/{domo}', [DomosController::class, 'actualizar'])->name('domoActualizar');
+/* Route::post('domos', [DomosController::class, 'guardar'])->name('domoGuardar'); */
+/* Route::put('domos/{domo}', [DomosController::class, 'actualizar'])->name('domoActualizar'); */
 //En las rutas registramos:
-Route::delete('domos/{domo}', [DomosController::class, 'eliminar'])->name('domoEliminar');
+/* Route::delete('domos/{domo}', [DomosController::class, 'eliminar'])->name('domoEliminar');  */
 
 
 Route::get('caracteristicas', [CaracteristicasController::class, 'index'])->name('caracteristicaIndex');
@@ -58,4 +60,12 @@ Route::post('servicios', [ServiciosController::class, 'guardar'])->name('servici
 Route::put('servicios/{servicio}', [ServiciosController::class, 'actualizar'])->name('servicioActualizar');
 //En las rutas registramos:
 Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])->name('servicioEliminar');
+
+Route::get('/', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
+
+Route::get('/domo/caracteristicas', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
+Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->name('domocaracteristicaguardar');
+Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name('domocaracteristicalistar');
+
+
 

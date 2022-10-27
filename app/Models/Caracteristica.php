@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Caracteristica extends Model
 {
-    protected $guarded = [];  
     use HasFactory;
+
+    protected $table = 'caracteristica';
+
+    protected $fillable = ['nombre', 'detalle', 'cantidad'];
+
+    public $timestamps = false;
 }

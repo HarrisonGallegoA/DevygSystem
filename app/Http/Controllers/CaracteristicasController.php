@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Caracteristica;
+use App\Models\Caracteristica; 
 
 
 class CaracteristicasController extends Controller
 {
-    public function index(){
+     public function index(){
 
         $caracteristicas = Caracteristica::all();
         return view('Caracteristicas.index', compact('caracteristicas'));
@@ -27,7 +27,7 @@ class CaracteristicasController extends Controller
 
         return redirect('caracteristicas')->with('mensaje', 'Caracteristica guardada'); 
     
-    }
+    }   
 
     public function actualizar(Caracteristica $caracteristica){
 
@@ -43,9 +43,9 @@ class CaracteristicasController extends Controller
     }
 
 
-    public function eliminar(Caracteristica $caracteristica)
+    /* public function eliminar(Caracteristica $caracteristica)
     {
         $caracteristica->delete();
         return redirect('caracteristicas')->with('mensaje', 'Caracteristica eliminada');
-    }
+    } */ 
 }
