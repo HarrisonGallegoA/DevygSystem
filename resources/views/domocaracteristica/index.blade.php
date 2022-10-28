@@ -10,7 +10,7 @@
     <div class="col-sm-8 col-sm-offset-2">
         <a class="btn btn-info col-3" href="/domo/listar"><i class="fa-solid fa-igloo"></i></i>
             Lista de Domos
-            </a>
+        </a>
     </div>
 </div>
 <br>
@@ -19,31 +19,33 @@
     @csrf
     <div class="row">
         <div class="col-6">
-            <div class="card">
-                <div class="card-head">
-                    <h4 class="text-center">Info Domo</h4>
+            <div class="card shadow">
+                <div class="card-header">
+                    <h5 class="text-center">Crear Domo</h5>
                 </div>
                 <div class="row card-body">
                     <div class="form-group col-6">
-                        <label for="">Nombre</label>
-                        <input type="text" class="form-control" name="nombre">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el nombre del domo" name="nombre">
                     </div>
                     <div class="form-group col-6">
-                        <label for="">Descripcion</label>
-                        <textarea class="form-control" name="descripcion"
+                        <label for="capacidad">Descripción</label>
+                        <textarea class="form-control" name="descripcion" placeholder="Ingrese una descripción"
                             rows="2"></textarea>
                     </div>
                     <div class="form-group col-6">
                         <label for="">Capapcidad</label>
-                        <input type="number" class="form-control" name="capacidad">
+                        <input type="number" class="form-control" placeholder="Ingrese una la capacidad"
+                            name="capacidad">
                     </div>
                     <div class="form-group col-6">
-                        <label for="">Numero de baños</label>
-                        <input type="number" class="form-control" name="numerobaños">
+                        <label for="numerobaños">Numero de baños</label>
+                        <input type="number" class="form-control" placeholder="Ingrese el numero de baños"
+                            name="numerobaños">
                     </div>
                     <div class="form-group col-6">
-                        <label for="">Tipo de domo</label>
-                        <input type="text" class="form-control" name="tipodomo">
+                        <label for="tipodomo">Tipo de domo</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el tipo de domo" name="tipodomo">
                     </div>
                     {{-- <div class="form-group col-6">
                         <label for="">Estado</label>
@@ -61,9 +63,9 @@
 
         </div>
         <div class="col-6">
-            <div class="card">
-                <div class="card-head">
-                    <h4 class="text-center">Info caracteristicas</h4>
+            <div class="card shadow">
+                <div class="card-header">
+                    <h5 class="text-center">Añadir Caracteristica</h5>
                 </div>
                 <div class="row card-body">
                     <div class="col-6">
@@ -85,25 +87,33 @@
                     </div>
                     <div class="col-12">
                         <button onclick="agregar_caracteristica()" type="button"
-                            class="btn btn-info float-right">Agregar</button>
+                            class="btn btn-success float-right"><i class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Cantidad</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tblCaracteristicas">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Cantidad</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblCaracteristicas">
 
-                    </tbody>
-                </table>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </form>
+
+<br><br><br>
 
 @endsection
 
@@ -125,7 +135,7 @@
                                 </td>
                                 <td>${cantidad}</td>
                                 <td>
-                                    <button type="button" class="btn btn-danger" onclick="eliminar_caracteristica(${caracteristica_id})">X</button>
+                                    <button type="button" class="btn btn-danger" onclick="eliminar_caracteristica(${caracteristica_id})"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             <tr>
                         

@@ -132,19 +132,29 @@
                         <td>{{$domo->caracteristicaDomo->nombre}}</td>
                         <td>
 
-                            <form action="{{route('domoEliminar', $domo)}}" method="post" class="formulario-eliminar">
+                          {{--   <form action="{{route('domoEliminar', $domo)}}" method="post" class="formulario-eliminar">
                                 <a href="#mostrarDomo{{$domo->id}}" data-toggle="modal"
                                     data-target="#mostrarDomo{{$domo->id}}"><i
-                                        class="fas fa-info-circle fa-lg text-success"></i></a>
+                                        class="fas fa-info-circle fa-lg text-success"></i></a> --}}
                                 <a href="#editarDomo{{$domo->id}}" data-toggle="modal"
                                     data-target="#editarDomo{{$domo->id}}"
                                     style="margin-left: 20px; margin-right: 20px;"><i
                                         class="fas fa-user-edit fa-lg"></i></a>
 
-                                @csrf @method('DELETE')
+                                {{-- @csrf @method('DELETE')
                                 <button type="submit " style="border: none"><i
-                                        class="fas fa-trash-alt fa-lg text-danger"></i></button>
-                            </form>
+                                        class="fas fa-trash-alt fa-lg text-danger"></i></button> --}}
+                           {{--  </form> --}}
+                           <td>
+                            @if($domo->estado == 1)
+                            
+                            <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            
+                            @elseif ($domo->estado == 2)
+                            
+                            <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            @endif</td>
+                        <td>
                         </td>
                     </tr>
         </div>

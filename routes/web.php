@@ -61,7 +61,7 @@ Route::put('servicios/{servicio}', [ServiciosController::class, 'actualizar'])->
 //En las rutas registramos:
 Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])->name('servicioEliminar');
 
-Route::get('/', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
+/* Route::get('/', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex'); */
 
 Route::get('/domo/caracteristicas', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
 Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->name('domocaracteristicaguardar');

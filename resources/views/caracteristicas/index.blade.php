@@ -30,11 +30,11 @@
                 <div class="modal-body">
                     @csrf
 
-                    @if($errors->any())
+                    {{-- @if($errors->any())
                     @foreach($errors->all() as $error)
                     <p>{{$error}}</p>
                     @endforeach
-                    @endif
+                    @endif --}}
 
                     <div class="form-group">
                         <label for="nombre">Nombre Caracteristica</label>
@@ -113,6 +113,16 @@
                                         class="fas fa-trash-alt fa-lg text-danger"></i></button> --}}
                            {{--  </form> --}}
                         </td>
+                        {{-- <td>
+                            @if($caracteristica->estado == 1)
+                            
+                            <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            
+                            @elseif ($caracteristica->estado == 2)
+                            
+                            <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            @endif</td>
+                        <td> --}}
                     </tr>
         </div>
     </div>

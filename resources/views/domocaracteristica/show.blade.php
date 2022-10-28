@@ -10,8 +10,7 @@
 <div class="row">
     <div class="col">
         <div class="col-sm-8 col-sm-offset-2">
-            <a class="btn btn-info col-3" href="/domo/caracteristicas"><i
-                    class="fa-sharp fa-solid fa-landmark-dome"></i>
+            <a class="btn btn-info col-3" href="/domo/caracteristicas"><i class="fa-solid fa-igloo"></i>
                 Agregar
                 Domo</a>
         </div>
@@ -86,29 +85,6 @@
 
                     </tr>
                     @endforeach
-
-                    <!-- Modal CREAR caracteristica-->
-                    <div class="modal" tabindex="-1">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title">Modal title</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Modal body text goes here.</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    <!-- FIN Modal CREAR Domo-->
-
                 </tbody>
             </table>
         </div>
@@ -116,29 +92,28 @@
 </div>
 
 @if(count($caracteristicas) > 0 )
-<div class="row">
-    <div class="col">
-        <table class="table">
-            <thead>
-                <t>
-                    <th colspan="2" class="text-center"></th>
+<div class="card shadow mb-4 col-10">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                        </tr>
+                            <th>Nombre</th>
+                            <th>detalle</th>
+                            <th>Cantidad</th>
+                </thead>
+                <tbody>
+                    @foreach ($caracteristicas as $value)
+                    <tr>
+                        <td>{{ $value->nombre }}</td>
+                        <td>{{ $value->detalle }}</td>
+                        <td>{{ $value->cantidad_c }}</td>
                     </tr>
-                    <t>
-                        <th>Nombre</th>
-                        <th>detalle</th>
-                        <th>Cantidad</th>
-            </thead>
-            <tbody>
-                @foreach ($caracteristicas as $value)
-                <tr>
-                    <td>{{ $value->nombre }}</td>
-                    <td>{{ $value->detalle }}</td>
-                    <td>{{ $value->cantidad_c }}</td>
-                </tr>
-                @endforeach
+                    @endforeach
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <br>

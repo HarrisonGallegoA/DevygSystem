@@ -28,11 +28,11 @@
                 <div class="modal-body">
                     @csrf
 
-                    @if($errors->any())
+                    {{-- @if($errors->any())
                     @foreach($errors->all() as $error)
                     <p>{{$error}}</p>
                     @endforeach
-                    @endif
+                    @endif --}}
 
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
@@ -116,22 +116,31 @@
                         <td>{{$servicio->descripcion}}</td>
                         <td>{{$servicio->precio}}</td>
                         <td>{{$servicio->tiempo}}</td>
-                        <td>{{$servicio->estado}}</td>
+                        <td>
+                            @if($servicio->estado == 1)
+                            
+                            <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            
+                            @elseif ($servicio->estado == 2)
+                            
+                            <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            @endif
+                        </td>
                         <td>
                             
-                            <form action="{{route('servicioEliminar', $servicio)}}" method="post" class="formulario-eliminar">
+                            {{-- <form action="{{route('servicioEliminar', $servicio)}}" method="post" class="formulario-eliminar">
                                 <a href="#mostrarServicio{{$servicio->id}}" data-toggle="modal"
                                     data-target="#mostrarServicio{{$servicio->id}}"><i
-                                        class="fas fa-info-circle fa-lg text-success"></i></a>
+                                        class="fas fa-info-circle fa-lg text-success"></i></a> --}}
                                 <a href="#editarServicio{{$servicio->id}}" data-toggle="modal"
                                     data-target="#editarServicio{{$servicio->id}}"
                                     style="margin-left: 20px; margin-right: 20px;"><i
                                         class="fas fa-user-edit fa-lg"></i></a>
 
-                                @csrf @method('DELETE')
+                                {{-- @csrf @method('DELETE')
                                 <button type="submit " style="border: none"><i
                                         class="fas fa-trash-alt fa-lg text-danger"></i></button>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
             </div>
