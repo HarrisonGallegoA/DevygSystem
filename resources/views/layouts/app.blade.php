@@ -72,9 +72,6 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -251,9 +248,6 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
-
-                
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid ">

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class DomosController extends Controller
 {
-     public function index(){
+     /* public function index(){
         $domos = Domo::paginate();
         $caracteristicas = Caracteristica::all();
         return view('Domos.index', compact('domos', 'caracteristicas'));
@@ -52,5 +52,5 @@ class DomosController extends Controller
     {
         $domo->delete();
         return redirect('domos')->with('mensaje', 'Domo eliminado');
-    }  */
+    }  */ 
 }

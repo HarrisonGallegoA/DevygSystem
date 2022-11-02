@@ -82,7 +82,7 @@
                     <div class="col-3">
                         <div class="form-group">
                             <label for="">Cantidad</label>
-                            <input type="number" id="cantidad" class="form-control">
+                            <input type="number" id="cantidad" class="form-control" min="1">
                         </div>
                     </div>
                     <div class="col-12">
@@ -119,14 +119,20 @@
 
 @section('scripts')
 <script>
+    let caracteristicasD = [''];
     function agregar_caracteristica(){
                     let caracteristica_id = $("#caracteristicas option:selected").val();
                     let caracteristica_text = $("#caracteristicas option:selected").text();
                     let cantidad = $("#cantidad").val();
-
+                    let existe = caracteristicasD.includes(caracteristica_text)
+                                        
                     if(cantidad > 0){
-
-                        $("#tblCaracteristicas").append(`
+                        
+                        if (existe) {
+                            alert("la caracteristica ya existe")
+                            
+                        } else {
+                            $("#tblCaracteristicas").append(`
                             <tr id="tr-${caracteristica_id}">
                                 <td>
                                     <input type="hidden" name="caracteristica_id[]" value="${caracteristica_id} "/>
@@ -140,10 +146,13 @@
                             <tr>
                         
                         `);
+                        }
 
                     }else{
                         alert("Se debe ingresar una cantidad");
                     }
+                    caracteristicasD.push(caracteristica_text)
+                    /* console.log(caracteristicasD); */
                 }
 
                 function eliminar_caracteristica(id){
