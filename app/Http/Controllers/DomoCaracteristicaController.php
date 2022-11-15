@@ -38,8 +38,10 @@ class DomoCaracteristicaController extends Controller
                     "cantidad"=>$input["cantidades"][$key]
                 ]);
 
-                 $ins = Caracteristica::find($value);
+                $ins = Caracteristica::find($value);
+                /*  if($input["cantidades"] <= "cantidad"->$ins->cantidad)  */
                 $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]); 
+                 
             }
 
                 DB::commit();
@@ -48,11 +50,23 @@ class DomoCaracteristicaController extends Controller
 
                  DB::rollBack();
 
-                return redirect("/domo/listar")->with('status', $e->getMessage()); 
+                return redirect("/domo/caracteristicas")->with('status', $e->getMessage()); 
 
         }
 
+        /* $id = $request->input("id");
+        $caracteristicas = [];
+        if($id != null){
+            $caracteristicas = Caracteristica::select("caracteristica.*", "domo_caracteristica.cantidad as cantidad_c")
+            ->join("domo_caracteristica", "caracteristica.id", "=", "domo_caracteristica.caracteristica_id")
+            ->where("domo_caracteristica.domo_id", $id)
+            ->get();
+        }
+        
+        $domos = Domo::select("domo.*")->get(); */
+
     }
+
 
     public function show(Request $request){
 
@@ -69,6 +83,22 @@ class DomoCaracteristicaController extends Controller
 
         return view("domocaracteristica.show", compact('domos', 'caracteristicas'));
     }
+
+    /* public function actualizar(Domo $domo){
+
+        $campos=request()->validate([
+            'nombredomo'=>'required|min:3',
+            'descripcion'=>'required',
+            'tipodomo'=>'required',
+            'capacidad'=>'required',
+            'numerobaños'=>'required',
+            'estado'=>'required'
+
+        ]);
+        $domo->update($campos);
+    
+        return redirect('domocaracteristica.index')->with('mensaje', 'Domo actualizado');
+    } */
 }
 
 

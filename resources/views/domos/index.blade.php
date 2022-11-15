@@ -246,11 +246,11 @@
                     <div class="modal-body">
                         @csrf @method('PUT')
 
-                        @if($errors->any())
+                        {{-- @if($errors->any())
                         @foreach($errors->all() as $error)
                         <p>{{$error}}</p>
                         @endforeach
-                        @endif
+                        @endif --}}
 
 
                         <div class="form-group">

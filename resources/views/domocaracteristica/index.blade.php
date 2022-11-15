@@ -26,26 +26,37 @@
                 <div class="row card-body">
                     <div class="form-group col-6">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el nombre del domo" name="nombre">
+                        <input type="text" class="form-control" placeholder="Ingrese el nombre del domo" name="nombre"
+                            required>
                     </div>
                     <div class="form-group col-6">
                         <label for="capacidad">Descripción</label>
-                        <textarea class="form-control" name="descripcion" placeholder="Ingrese una descripción"
-                            rows="2"></textarea>
+                        <textarea class="form-control" name="descripcion" placeholder="Ingrese una descripción" rows="2"
+                            required></textarea>
                     </div>
                     <div class="form-group col-6">
                         <label for="">Capapcidad</label>
                         <input type="number" class="form-control" placeholder="Ingrese una la capacidad"
-                            name="capacidad">
+                            name="capacidad" required>
                     </div>
+                    {{-- <div class="form-group col-6">
+                        <label for="">Categoria</label>
+                        <select name="categoria_id" class="form-control">
+                            <option value="">Seleccione</option>
+                            @foreach($categorias as $value)
+                            <option value="{{ $value->id }}">{{ $value->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div> --}}
                     <div class="form-group col-6">
                         <label for="numerobaños">Numero de baños</label>
                         <input type="number" class="form-control" placeholder="Ingrese el numero de baños"
-                            name="numerobaños">
+                            name="numerobaños" required>
                     </div>
                     <div class="form-group col-6">
-                        <label for="tipodomo">Tipo de domo</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el tipo de domo" name="tipodomo">
+                        <label for="">Tipo de domo</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el tipo de domo" name="tipodomo"
+                            required>
                     </div>
                     {{-- <div class="form-group col-6">
                         <label for="">Estado</label>
@@ -71,8 +82,7 @@
                     <div class="col-6">
                         <div class="form-group ">
                             <label for="">Nombre</label>
-                            <select name="caracteristicas" id="caracteristicas" class="form-control">
-                                <option value="">Seleccione</option>
+                            <select name="caracteristicas" id="caracteristicas" class="form-control" required>
                                 @foreach ($caracteristicas as $value)
                                 <option value="{{ $value->id }}">{{ $value->nombre }}</option>
                                 @endforeach
@@ -86,8 +96,8 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <button onclick="agregar_caracteristica()" type="button"
-                            class="btn btn-success float-right"><i class="fa-solid fa-plus"></i></button>
+                        <button onclick="agregar_caracteristica()" type="button" class="btn btn-success float-right"><i
+                                class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>
                 <div class="card shadow">
@@ -124,14 +134,16 @@
                     let caracteristica_id = $("#caracteristicas option:selected").val();
                     let caracteristica_text = $("#caracteristicas option:selected").text();
                     let cantidad = $("#cantidad").val();
-                    let existe = caracteristicasD.includes(caracteristica_text)
+                    let existe = caracteristicasD.includes(caracteristica_id)
                                         
                     if(cantidad > 0){
                         
                         if (existe) {
                             alert("la caracteristica ya existe")
-                            
+
                         } else {
+                            caracteristicasD.push(caracteristica_id)
+                            console.log(caracteristicasD); 
                             $("#tblCaracteristicas").append(`
                             <tr id="tr-${caracteristica_id}">
                                 <td>
@@ -144,22 +156,43 @@
                                     <button type="button" class="btn btn-danger" onclick="eliminar_caracteristica(${caracteristica_id})"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             <tr>
-                        
                         `);
-                        }
+                        }   
 
                     }else{
                         alert("Se debe ingresar una cantidad");
-                    }
-                    caracteristicasD.push(caracteristica_text)
-                    /* console.log(caracteristicasD); */
+                    }  
                 }
 
                 function eliminar_caracteristica(id){
-                    $("#tr-" + id).remove();
+                    const index = caracteristicasD.indexOf(id.toString())
+                    if(index>-1){
+                        caracteristicasD.splice(index, 1);
+                        $("#tr-" + id).remove();
+                    }
+                     console.log("Nuevo araray",caracteristicasD); 
+
+                    // console.warn(id);
+                    // console.log(caracteristicasD);
+
+                    // const indexData = caracteristicasD.indexOf(id.toString())   ;
+                    // caracteristicasD.remove('2');
+                    // console.log(caracteristicasD);
                 }
 
 </script>
 
+@if (session('status'))
+@if(session('status'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Es necesario agregar una caracteristica!',
+    })
+</script>
+
+@endif
+@endif
 
 @endsection

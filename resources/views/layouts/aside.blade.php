@@ -62,7 +62,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Servicios</h6>
                         <a class="collapse-item" href="{{ route('servicioIndex') }}">Servicios</a>
-                        <a class="collapse-item" href="#">Planes</a>
+                        <a class="collapse-item" href="{{route('planserviciolistar') }}">Planes</a>
                     </div>
                 </div>
             </li>
@@ -120,7 +120,7 @@
                     <i class="fa-solid fa-tv"></i>
                     <span>Caracteristicas</span></a>
             </li>
-
+            
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="bi bi-chat-heart"></i>

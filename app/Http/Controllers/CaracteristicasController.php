@@ -21,6 +21,7 @@ class CaracteristicasController extends Controller
             'nombre'=>'required|min:3',
             'detalle'=>'required',
             'cantidad'=>'required',
+            'estado'=>'required'
     
         ]);
         Caracteristica::create($campos);
@@ -35,6 +36,7 @@ class CaracteristicasController extends Controller
             'nombre'=>'required|min:3',
             'detalle'=>'required',
             'cantidad'=>'required',
+            'estado'=>'required',
     
         ]);
         $caracteristica->update($campos);

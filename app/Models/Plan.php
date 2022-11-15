@@ -10,7 +10,7 @@ class Plan extends Model
     /* use HasFactory; */
     protected $table = 'plan';
 
-    protected $fillable = ['nombre', 'descripcion', 'precioplan', 'totalservicio', 'totalplan', 'estado'];
+    protected $fillable = ['nombre', 'descripcion', 'precioplan', 'totalservicio', 'totalplan', 'estado', 'domo_id'];
 
     public $timestamps = false;
 }

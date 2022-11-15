@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Domo;
+use App\Models\Servicio;
+use App\Models\Plan;
+use App\Models\PlanServicio;
 use Illuminate\Http\Request;
+use DB;
 
 class PlanServicioController extends Controller
 {
     public function index(){
-        $caracteristicas = Servicio::all(); 
-        $domos = Servicio::all(); 
+        $servicios = Servicio::all(); 
+        $domos = Domo::all(); 
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
-        return view('planservicio.index', compact('caracteristicas','domos')); 
+        return view('planservicios.index', compact('servicios','domos')); 
     }
 
     public function save(Request $request){
@@ -25,27 +30,27 @@ class PlanServicioController extends Controller
                 "precioplan"=>$input["precioplan"],
                 "totalservicio"=>$input["totalservicio"],
                 "totalplan"=>$input["totalplan"],
+                "domo_id" =>$input["domo_id"],
                 "estado"=>1
             ]);
 
-           foreach($input["caracteristica_id"] as $key => $value){
-                Plan::create([
-                    "caracteristica_id"=>$value,
-                    "domo_id"=>$domo->id,
-                    "cantidad"=>$input["cantidades"][$key]
+           foreach($input["servicio_id"] as $key => $value){
+                    PlanServicio::create([
+                    "servicio_id"=>$value,
+                    "plan_id"=>$plan->id,
                 ]);
 
-                 $ins = Caracteristica::find($value);
-                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]); 
+                 /* $ins = Servicio::find($value);
+                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);  */
             }
 
                 DB::commit();
-                return redirect("/domo/listar")->with('status', '1');
+                return redirect("/plan/listar")->with('status', '1');
         }catch(\Exception $e){
 
                  DB::rollBack();
 
-                return redirect("/domo/listar")->with('status', $e->getMessage()); 
+                return redirect("/plan/servicios")->with('status', $e->getMessage()); 
 
         }
 
@@ -54,16 +59,18 @@ class PlanServicioController extends Controller
     public function show(Request $request){
 
         $id = $request->input("id");
-        $caracteristicas = [];
+        $servicios = [];
         if($id != null){
-            $caracteristicas = Caracteristica::select("caracteristica.*", "domo_caracteristica.cantidad as cantidad_c")
-            ->join("domo_caracteristica", "caracteristica.id", "=", "domo_caracteristica.caracteristica_id")
-            ->where("domo_caracteristica.domo_id", $id)
+            $servicios = Servicio::select("servicios.*")
+            ->join("plan_domo_servicio", "servicios.id", "=", "plan_domo_servicio.servicio_id")
+            ->where("plan_domo_servicio.plan_id", $id)
             ->get();
         }
         
-        $domos = Domo::select("domo.*")->get();
+        $planes = Plan::select("plan.*", "domo.nombre as domo")
+        ->join("domo", "domo.id", "=", "plan.domo_id")
+        ->get();
 
-        return view("domocaracteristica.show", compact('domos', 'caracteristicas'));
+        return view("planservicios.show", compact('planes', 'servicios'));
     }
 }

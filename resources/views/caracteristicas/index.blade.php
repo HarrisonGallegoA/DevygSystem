@@ -56,6 +56,14 @@
                             placeholder="Ingrese la cantidad" value="{{old('cantidad')}}">
                         <small class="text-danger">{{$errors->first('cantidad')}}</small>
                     </div>
+                    <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <select class="form-control" name="estado" id="estado">
+                            <option value="1">Activo</option>
+                            <option value="2">Inactivo</option> 
+                        </select>
+
+                    </div>
 
                 </div>
                 <div class="modal-footer">
@@ -86,6 +94,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Detalle</th>
                         <th scope="col">Cantidad</th>
+                        <th scope="col">estado</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -96,6 +105,16 @@
                         <td>{{$caracteristica->nombre}}</td>
                         <td>{{$caracteristica->detalle}}</td>
                         <td>{{$caracteristica->cantidad}}</td>
+                        <td>
+                            @if($caracteristica->estado == 1)
+                            
+                            <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            
+                            @elseif ($caracteristica->estado == 2)
+                            
+                            <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
+                            @endif
+                        </td>
                         <td>
 
                           {{--   <form action="{{route('caracteristicaEliminar', $caracteristica)}}" method="post"
@@ -164,6 +183,14 @@
                                 disabled>{{old('detalle', $caracteristica->detalle)}}</textarea>
                             <small class="text-danger">{{$errors->first('detalle')}}</small>
                         </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select class="form-control" name="estado" id="estado">
+                                <option value="1">Activo</option>
+                                <option value="2">Inactivo</option> 
+                            </select>
+    
+                        </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -214,6 +241,14 @@
                             <textarea class="form-control" name="detalle" id="detalle"
                                 rows="2">{{old('detalle', $caracteristica->detalle)}}</textarea>
                             <small class="text-danger">{{$errors->first('detalle')}}</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select class="form-control" name="estado" id="estado">
+                                <option value="1">Activo</option>
+                                <option value="2">Inactivo</option> 
+                            </select>
+    
                         </div>
 
                         <div class="modal-footer">

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 /* use App\Http\Controllers\DomosController; */
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\PlanServicioController;
 use App\Http\Controllers\CaracteristicasController;
 use App\Http\Controllers\DomoCaracteristicaController;
 
@@ -31,7 +32,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
+
 
 Route::get('/Usuarios', [UserController::class, 'index'])->name('ListUser');
 
@@ -40,7 +41,7 @@ Route::get('/Roles', function () {
 });
 
 
-Route::get('domos', [DomosController::class, 'index'])->name('domoIndex');
+/* Route::get('domos', [DomosController::class, 'index'])->name('domoIndex'); */
 /* Route::post('domos', [DomosController::class, 'guardar'])->name('domoGuardar'); */
 /* Route::put('domos/{domo}', [DomosController::class, 'actualizar'])->name('domoActualizar'); */
 //En las rutas registramos:
@@ -66,6 +67,14 @@ Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])-
 Route::get('/domo/caracteristicas', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
 Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->name('domocaracteristicaguardar');
 Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name('domocaracteristicalistar');
+ Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar'); 
 
 
+
+//rutas plan
+Route::get('/plan/servicios', [PlanServicioController::class, 'index'])->name('planservicioindex');
+Route::post('/plan/guardar', [PlanServicioController::class, 'save'])->name('planservicioguardar');
+Route::get('/plan/listar', [PlanServicioController::class, 'show'])->name('planserviciolistar');
+
+});
 

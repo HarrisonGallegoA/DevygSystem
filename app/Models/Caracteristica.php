@@ -11,7 +11,7 @@ class Caracteristica extends Model
 
     protected $table = 'caracteristica';
 
-    protected $fillable = ['nombre', 'detalle', 'cantidad'];
+    protected $fillable = ['nombre', 'detalle', 'cantidad', 'estado'];
 
     public $timestamps = false;
 }

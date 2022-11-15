@@ -11,7 +11,7 @@ class PlanServicio extends Model
 
     protected $table = 'plan_domo_servicio';
 
-    protected $fillable = ['plan_id', 'domo_id', 'servicio_id'];
+    protected $fillable = ['plan_id', 'servicio_id'];
 
     public $timestamps = false;
 }
